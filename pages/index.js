@@ -2,6 +2,21 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
+
+// import useSWR from 'swr'
+
+// function Plant() {
+//   const { data, error } = useSWR('/api/plants', fetcher)
+//   console.log(data)
+//   if (error) return <div>failed to load</div>
+//   if (!data) return <div>loading...</div>
+//   return <div>hello {data.name}!</div>
+  
+// }
+
+
+
+
 export default function Home() {
   return (
     <div className={styles.container}>

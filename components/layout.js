@@ -4,10 +4,13 @@ import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import Nav from '../components/nav'
+import Main from './main'
 
 export const siteTitle = 'Planty'
 
 export default function Layout({ children, home }) {
+
+
     return (
         <div className={styles.container}>
             <Head>
@@ -28,7 +31,7 @@ export default function Layout({ children, home }) {
             <header className={styles.header}>
                 <Nav />
             </header>
-            <main>{children}</main>
+            <Main>{children}</Main>
             {!home && (
                 <div className={styles.backToHome}>
                     <Link href="/">

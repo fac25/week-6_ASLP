@@ -4,7 +4,7 @@ import Layout, { siteTitle } from '../components/layout'
 import Products from '../components/products'
 
 
-export default function Home({ products }) {
+export default function Home() {
     return (
         <Layout home>
             <Head>

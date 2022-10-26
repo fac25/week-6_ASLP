@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
 import utilStyles from '../styles/utils.module.css'
 import Layout, { siteTitle } from '../components/layout'
+import Product from '../components/product'
+
 
 import useSWR from 'swr'
 
@@ -26,43 +26,66 @@ const { data, error} = useSWR('/api/plants', fetcher)
   </ul>
   )
 }
-export default function Home() {
+
+
+export async function getStaticProps() {
+    const products = [
+        {
+            id: 1,
+            image_link: '/products/pot_01.jpg',
+            name: 'orchid',
+            price: 10,
+            description:
+                'a diverse and widespread group of flowering plants with blooms that are often colourful and fragrant.',
+        },
+        {
+            id: 2,
+            image_link: '/products/pot_02.jpg',
+            name: 'sun flower',
+            price: 8,
+            description:
+                'Sunflowers are bee magnets; each flower head produces a large volume of pollen and nectar that lures in bees and other pollinators',
+        },
+        {
+            id: 3,
+            image_link: '/products/pot_03.jpg',
+            name: 'Croton',
+            price: 12,
+            description:
+                'Native to India, Sri Lanka, Malaysia and the western Pacific islands, the croton enjoys hot, humid climates.',
+        },
+        {
+            id: 4,
+            image_link: '/products/pot_04.jpg',
+            name: 'Aspidistra',
+            price: 15,
+            description:
+                'Aspidistra are sometimes known as the Cast Iron Plant because they’re almost impossible to kill. They’re practically bomb-proof (we have not tested this). ',
+        },
+    ]
+    return {
+        props: {
+            products,
+        },
+    }
+}
+
+export default function Home({ products }) {
     return (
         <Layout home>
             <Head>
                 <title>{siteTitle}</title>
             </Head>
-            <Plant />
+
             <div className={utilStyles.grid}>
-                <div className={utilStyles.card}>
-                    <Image
-                        priority
-                        src="/products/pot_02.jpg"
-                        className={utilStyles.cardImg}
-                        height={144}
-                        width={144}
-                        alt=""
+                {products.map(({ id, image_link, name, price }) => (
+                    <Product
+                        key={id}
+                        image_link={image_link}
+                        name={name}
+                        price={price}
                     />
-                    <div className={utilStyles.cardDetails}>
-                        <h2>Ficus</h2>
-                        <span>£30</span>
-                    </div>
-                </div>
-               
-                <div className={utilStyles.card}>
-                    <Image
-                        priority
-                        src="/products/pot_03.jpg"
-                        className={utilStyles.cardImg}
-                        height={144}
-                        width={144}
-                        alt=""
-                    />
-                    <div className={utilStyles.cardDetails}>
-                        <h2>Spider</h2>
-                        <span>£80</span>
-                    </div>
-                </div>
+                ))}
             </div>
         </Layout>
     )

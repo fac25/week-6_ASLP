@@ -3,7 +3,7 @@ import utilStyles from '../styles/utils.module.css'
 //import Image from "next/image";
 export default function Nav() {
     return (
-        <nav>
+        <nav className={utilStyles.mainNav}>
             <Link href="/">
                 <a className={utilStyles.logo}>Planty</a>
             </Link>

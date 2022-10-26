@@ -36,6 +36,9 @@ export default function Layout({ children, home }) {
                     </Link>
                 </div>
             )}
+            <footer><div className={utilStyles.footer}>
+                Made by ASLP
+                </div></footer>
         </div>
     )
 }

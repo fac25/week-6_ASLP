@@ -28,7 +28,7 @@ export default function Products() {
                     <div className={utilStyles.cardDetails}>
                         <h2>{obj.name}</h2>
                         <span>£{obj.price}</span>
-                        <AddToBasket data={data} />
+                        <AddToBasket data={obj} />
                     </div>
                 </div>
             ))}

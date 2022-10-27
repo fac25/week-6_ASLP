@@ -12,7 +12,6 @@ export async function getStaticPaths() {
         params: { name: nicePermalinks(String(plant.name)) },
     }))
 
-    console.log(path)
     return {
         paths: path,
         fallback: false,

@@ -28,7 +28,6 @@ export default function Products() {
                     <div className={utilStyles.cardDetails}>
                         <h2>{obj.name}</h2>
                         <span>£{obj.price}</span>
-
                         <Link
                             href={
                                 'products/' +
@@ -37,7 +36,7 @@ export default function Products() {
                         >
                             View product
                         </Link>
-                        <AddToBasket data={data} />
+                        <AddToBasket data={obj} />
                     </div>
                 </div>
             ))}

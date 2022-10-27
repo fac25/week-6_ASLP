@@ -3,12 +3,13 @@ import Head from 'next/head'
 import Layout, { siteTitle } from '../../components/layout'
 import utilStyles from '../../styles/utils.module.css'
 import Product from '../../components/product'
+import { nicePermalinks } from '../../lib/utils'
 export async function getStaticPaths() {
     const res = await fetch('http://localhost:3000/api/plants')
     const plants = await res.json()
 
     const path = plants.map((plant) => ({
-        params: { name: String(plant.name).toLowerCase().replace(' ', '-') },
+        params: { name: nicePermalinks(String(plant.name)) },
     }))
 
     console.log(path)
@@ -23,9 +24,7 @@ export async function getStaticProps({ params }) {
 
     const plants = await res.json()
     const filterplants = plants.filter(
-        (plant) =>
-            plant.name.toString().toLowerCase().replace(' ', '-') ===
-            params.name
+        (plant) => nicePermalinks(String(plant.name)) === params.name
     )
 
     return {

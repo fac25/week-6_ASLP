@@ -16,9 +16,10 @@ export async function getStaticPaths() {
     const plants = await res.json()
 
     const path = plants.map((plant) => ({
-        params: { name: String(plant.name) },
+        params: { name: String(plant.name).toLowerCase().replace(' ', '-') },
     }))
 
+    console.log(path)
     return {
         paths: path,
         fallback: false,
@@ -30,7 +31,9 @@ export async function getStaticProps({ params }) {
 
     const plants = await res.json()
     const filterplants = plants.filter(
-        (plant) => plant.name.toString() === params.name
+        (plant) =>
+            plant.name.toString().toLowerCase().replace(' ', '-') ===
+            params.name
     )
 
     return {

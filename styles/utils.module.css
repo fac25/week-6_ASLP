@@ -103,6 +103,15 @@
     line-height: 1.5;
 }
 
+.cardDetails a {
+    display: block;
+    padding: 0.5em 1em;
+    border: solid;
+    border-radius: 10px;
+}
+.cardDetails a:hover {
+    cursor: pointer;
+}
 .logo {
     height: 1em;
     margin-left: 0.5rem;

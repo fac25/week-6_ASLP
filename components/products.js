@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-
 import utilStyles from '../styles/utils.module.css'
+import AddToBasket from './addToBasketBtn'
+import { itemCount, setItemCount } from './layout'
+
 import useSWR from 'swr'
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
@@ -26,7 +28,7 @@ export default function Products() {
                     <div className={utilStyles.cardDetails}>
                         <h2>{obj.name}</h2>
                         <span>£{obj.price}</span>
-                        <addToBasketBtn />
+
                         <Link
                             href={
                                 'products/' +
@@ -35,6 +37,7 @@ export default function Products() {
                         >
                             View product
                         </Link>
+                        <AddToBasket data={data} />
                     </div>
                 </div>
             ))}

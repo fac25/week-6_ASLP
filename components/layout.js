@@ -7,7 +7,7 @@ import Nav from '../components/nav'
 
 export const siteTitle = 'Planty'
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home, cart }) {
     return (
         <div className={styles.container}>
             <Head>
@@ -36,6 +36,9 @@ export default function Layout({ children, home }) {
                     </Link>
                 </div>
             )}
+            <footer>
+                <div className={utilStyles.footer}>Made by ASLP</div>
+            </footer>
         </div>
     )
 }

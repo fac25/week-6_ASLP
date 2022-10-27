@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import utilStyles from '../styles/utils.module.css'
+import CheckOutBtn from './checkoutBtn'
 //import Image from "next/image";
 export default function Nav() {
     return (
@@ -7,7 +8,7 @@ export default function Nav() {
             <Link href="/">
                 <a className={utilStyles.logo}>Planty</a>
             </Link>
-            <span>Basket</span>
+            <CheckOutBtn />
         </nav>
     )
 }

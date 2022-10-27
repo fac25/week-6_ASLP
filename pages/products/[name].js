@@ -4,7 +4,15 @@ import Layout, { siteTitle } from '../../components/layout'
 import utilStyles from '../../styles/utils.module.css'
 import Product from '../../components/product'
 import { nicePermalinks } from '../../lib/utils'
+
+//import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+// require('dotenv').config()
+// console.log(dotenv)
+// import useSWR from 'swr'
+// const fetcher = (...args) => fetch(...args).then((res) => res.json())
+
 export async function getStaticPaths() {
+    //const plants = useSWR('/api/plants', fetcher)
     const res = await fetch('http://localhost:3000/api/plants')
     const plants = await res.json()
 
@@ -12,7 +20,6 @@ export async function getStaticPaths() {
         params: { name: nicePermalinks(String(plant.name)) },
     }))
 
-    console.log(path)
     return {
         paths: path,
         fallback: false,
@@ -20,9 +27,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const res = await fetch('http://localhost:3000/api/plants/')
-
+    // const plants = useSWR('/api/plants', fetcher)
+    //console.log({ params })
+    const res = await fetch('http://localhost:3000/api/plants')
     const plants = await res.json()
+
     const filterplants = plants.filter(
         (plant) => nicePermalinks(String(plant.name)) === params.name
     )

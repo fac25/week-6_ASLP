@@ -3,12 +3,12 @@ import utilStyles from '../styles/utils.module.css'
 
 export default function Product({ name, description, image_link, price }) {
     return (
-        <div>
+        <div className="container">
             <div>
                 <Image
                     priority
                     src={image_link}
-                    className={utilStyles.borderCircle}
+                    className="product-image"
                     height={500}
                     width={500}
                     alt={name}
@@ -22,6 +22,14 @@ export default function Product({ name, description, image_link, price }) {
                     <button>Add to cart</button>
                 </header>
             </div>
+            <style jsx>{`
+                .container {
+                    display: flex;
+                }
+                h1 {
+                    font-size: 1.25rem;
+                }
+            `}</style>
         </div>
     )
 }

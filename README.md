@@ -24,8 +24,8 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 ## User Stories
 
 - [x] As an plant lover, I want to see an overview of the plants available
-- [] As a plant-enthusiast, I want to be able to select plants and put them into my shopping cart
-- [] As a picky user I want to pick different pot colours for my plants
+- [ ] As a plant-enthusiast, I want to be able to select plants and put them into my shopping cart
+- [ ] As a picky user I want to pick different pot colours for my plants
 
 ## Acceptance criteria 
 
@@ -103,7 +103,7 @@ STRETCH Add cart function
 (After Lunch)
 
 - View Product from home page
-- Add to cart function 3rd attempt …
+- Add to cart function 3rd attempt … (Our Nemesis...🥲)
 
 ## Learn More
 

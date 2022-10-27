@@ -9,6 +9,8 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function Products() {
     // const { amount } = React.useContext(globalStateContext)
+    // console.log(amount)
+    console.log(React.useContext(globalStateContext))
     const { data, error } = useSWR('/api/plants', fetcher)
     if (error) return <div>Failed to load</div>
     if (!data) return <div>Loading...</div>

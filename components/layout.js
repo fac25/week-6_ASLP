@@ -8,7 +8,7 @@ import Main from './main'
 
 export const siteTitle = 'Planty'
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home, cart }) {
 
 
     return (
@@ -29,7 +29,7 @@ export default function Layout({ children, home }) {
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <header className={styles.header}>
-                <Nav />
+                <Nav num={cart}/>
             </header>
             <Main>{children}</Main>
             {!home && (

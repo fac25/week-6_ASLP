@@ -1,12 +1,14 @@
-const { PrismaClient } = require('@prisma/client')
+import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export default async function routeHandler(req, res) {
-    const plants = await prisma.plant.findMany()
+export default prisma
 
-    return plants
-}
+// export default async function routeHandler(req, res) {
+//     const plants = await prisma.plant.findMany()
+//     console.log(plants)
+//     return plants
+// }
 
 // export function getPlantData() {
 //     const plants = prisma.plant.findMany()

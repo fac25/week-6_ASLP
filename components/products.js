@@ -1,9 +1,10 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import utilStyles from '../styles/utils.module.css'
 import AddToBasket from './addToBasketBtn'
 import { itemCount, setItemCount } from './layout'
+
 import useSWR from 'swr'
-import React from 'react'
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
@@ -16,7 +17,6 @@ export default function Products() {
         <>
             {data.map((obj) => (
                 <div className={utilStyles.card} key={obj.id}>
-                    {/* Amount: {amount} */}
                     <Image
                         priority
                         src={obj.image_link}
@@ -28,6 +28,15 @@ export default function Products() {
                     <div className={utilStyles.cardDetails}>
                         <h2>{obj.name}</h2>
                         <span>£{obj.price}</span>
+
+                        <Link
+                            href={
+                                'products/' +
+                                obj.name.toLowerCase().replace(' ', '-')
+                            }
+                        >
+                            View product
+                        </Link>
                         <AddToBasket data={data} />
                     </div>
                 </div>

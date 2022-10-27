@@ -1,40 +1,67 @@
-import prisma from '../api/paths'
-import { makeSerializable } from '../../lib/utils'
+// export all the Paths that we have
+import Head from 'next/head'
+import Layout, { siteTitle } from '../../components/layout'
+import utilStyles from '../../styles/utils.module.css'
+import Product from '../../components/product'
+export async function getStaticPaths() {
+    const res = await fetch('http://localhost:3000/api/plants')
+    const plants = await res.json()
 
-const Plant = (props) => {
-    let plantName = props.name
-    return <h1>{plantName}</h1>
+    const path = plants.map((plant) => ({
+        params: { name: String(plant.name).toLowerCase().replace(' ', '-') },
+    }))
+
+    console.log(path)
+    return {
+        paths: path,
+        fallback: false,
+    }
 }
-export const getServerSideProps = async (context) => {
-    const plant = await prisma.plant.findUnique({
-        where: { name: String(context.params.name) },
-    })
-    console.log(plant)
-    return { props: { ...makeSerializable(plant) } }
+
+export async function getStaticProps({ params }) {
+    const res = await fetch('http://localhost:3000/api/plants/')
+
+    const plants = await res.json()
+    const filterplants = plants.filter(
+        (plant) =>
+            plant.name.toString().toLowerCase().replace(' ', '-') ===
+            params.name
+    )
+
+    return {
+        props: filterplants[0],
+        revalidate: 10,
+    }
 }
+export default function Plant({ name, description, image_link, price }) {
+    //
+    return (
+        <Layout>
+            <Head>
+                <title>
+                    {siteTitle} | {name}
+                </title>
+            </Head>
 
-export default Plant
+            <div className={utilStyles.grid}>
+                <Product
+                    name={name}
+                    description={description}
+                    image_link={image_link}
+                    price={price}
+                />
+            </div>
+        </Layout>
+    )
+}
+// Alternatively use getServerSideProps
+// import prisma from '../../lib/prisma.js'
+// import { makeSerializable } from '../../lib/utils'
 
-// export async function getStaticPaths() {
-//     const plants = await routeHandler()
-
-//     const paths = plants.map((plant) => ({
-//         params: { name: String(plant.name) },
-//     }))
-
-//     return {
-//         paths,
-//         fallback: false,
-//     }
-// }
-
-// export async function getStaticProps({ params }) {
-//     return {
-//         props: {},
-//         revalidate: 10,
-//     }
-// }
-
-// export default function Post() {
-//     return <h1>Hello!</h1>
+// export const getServerSideProps = async (context) => {
+//     const plant = await prisma.plant.findUnique({
+//         where: { name: String(context.params.name) },
+//     })
+//     console.log(plant)
+//     return { props: { ...makeSerializable(plant) } }
 // }

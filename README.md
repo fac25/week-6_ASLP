@@ -72,7 +72,7 @@ Paz: Dev-ops
 
 (Before Lunch)
 
-Goals: Try to finish goals by lunch time - Database / HomePage [ ]
+Goals: Try to finish goals by lunch time - Database / HomePage
 
 - Database
 - Home page

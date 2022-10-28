@@ -3,7 +3,6 @@ import utilStyles from '../styles/utils.module.css'
 import Layout, { siteTitle } from '../components/layout'
 import Products from '../components/products'
 
-
 export default function Home() {
     return (
         <Layout home>

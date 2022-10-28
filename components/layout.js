@@ -7,7 +7,7 @@ import Main from './main'
 
 export const siteTitle = 'Planty'
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home, cart }) {
     return (
         <div className={styles.container}>
             <Head>

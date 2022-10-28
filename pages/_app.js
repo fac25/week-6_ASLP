@@ -1,17 +1,16 @@
 import '../styles/globals.css'
-import React from 'react'
-const globalState = {
-  amount: 0,
-}
+import React, { useState } from 'react'
 
-const globalStateContext = React.createContext(globalState)
+export const globalStateContext = React.createContext()
 // const dispatchStateContext = React.createContext(undefined)
 
 function MyApp({ Component, pageProps }) {
-  return (
-  <globalStateContext.Provider value={globalState}>
-  <Component {...pageProps} />
-  </globalStateContext.Provider>
-)}
+    const [amount, setAmount] = useState(0)
+    return (
+        <globalStateContext.Provider value={amount}>
+            <Component {...pageProps} />
+        </globalStateContext.Provider>
+    )
+}
 
 export default MyApp

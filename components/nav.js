@@ -6,14 +6,12 @@ import { globalStateContext } from '../pages/_app'
 //import Image from "next/image";
 export default function Nav() {
     const amount = useContext(globalStateContext)
-    console.log(amount)
     return (
         <nav className={utilStyles.mainNav}>
             <Link href="/">
                 <a className={utilStyles.logo}>Planty</a>
             </Link>
             <CheckOutBtn />
-            <span>{amount}</span>
         </nav>
     )
 }

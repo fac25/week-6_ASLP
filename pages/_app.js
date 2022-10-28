@@ -13,12 +13,13 @@ function MyApp({ Component, pageProps }) {
         const sum = array
             .map((element) => element.quantities)
             .reduce((a, b) => a + b, 0)
-        setAmount((amount = sum))
+        setAmount(sum)
+        console.log(amount)
     }
     return (
         <globalStateContext.Provider value={amount}>
             <Component {...pageProps} />
-            {/* <button onClick={addToCart}>add to cart test</button> */}
+            <button onClick={addToCart}>add to cart test</button>
         </globalStateContext.Provider>
     )
 }

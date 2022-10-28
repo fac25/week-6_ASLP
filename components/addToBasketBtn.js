@@ -1,8 +1,15 @@
 import styles from './addToBasketBtn.module.css'
+import addToCart from '../pages/_app'
 
 export default function AddToBasket({ data }) {
     return (
-        <button className={styles.addBtn} onClick={() => handleBasket(data)}>
+        <button
+            className={styles.addBtn}
+            onClick={() => {
+                handleBasket(data)
+                // addToCart()
+            }}
+        >
             Add to cart
         </button>
     )

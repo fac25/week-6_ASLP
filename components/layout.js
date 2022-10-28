@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
@@ -9,8 +8,6 @@ import Main from './main'
 export const siteTitle = 'Planty'
 
 export default function Layout({ children, home }) {
-
-
     return (
         <div className={styles.container}>
             <Head>
@@ -39,9 +36,9 @@ export default function Layout({ children, home }) {
                     </Link>
                 </div>
             )}
-            <footer><div className={utilStyles.footer}>
-                Made by ASLP
-                </div></footer>
+            <footer>
+                <div className={utilStyles.footer}>Made by ASLP</div>
+            </footer>
         </div>
     )
 }

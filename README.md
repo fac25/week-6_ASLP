@@ -105,6 +105,14 @@ STRETCH Add cart function
 - View Product from home page
 - Add to cart function 3rd attempt … (Our Nemesis...🥲)
 
+**Friday**
+
+(Before Lunch)
+
+Goals: Add to cart function using global state | Add quantity on products in product page
+
+[Presentation](…)
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
